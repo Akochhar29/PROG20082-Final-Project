@@ -1,4 +1,7 @@
 <resources>
+    <string name="Luke">Luke Van Rooyen</string>
+    <string name="Akshay">Akshay Kochhar</string>
+
     <string name="app_name">Assessment App</string>
     <string name="login">Login</string>
     <string name="keep">Keep me logged in</string>
