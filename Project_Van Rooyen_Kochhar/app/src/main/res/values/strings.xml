@@ -1,3 +1,32 @@
 <resources>
-    <string name="app_name">Project_Van Rooyen_Kochhar</string>
+    <string name="app_name">Assessment App</string>
+    <string name="login">Login</string>
+    <string name="keep">Keep me logged in</string>
+    <string name="name">Your name and Student Number</string>
+
+    <string name="greet">Hi, </string>
+    <string name="option">Please select an Option</string>
+    <string name="create_record">Enter new Record</string>
+    <string name="view_records">Display Previous Records</string>
+    <string name="logout">Log out</string>
+    <string name="submit">Submit</string>
+
+    <string name="new_record">New Record</string>
+    <string name="id_hint">Student id</string>
+    <string name="comment_hint">Comments</string>
+    <string name="save">Save Record</string>
+    <string name="back">Back</string>
+
+    <string name="all_records">All Records</string>
+    <string name="id_column">id</string>
+    <string name="score_column">Score</string>
+    <string name="comment_column">Comment</string>
+    <string name="main_page">Main Page</string>
+
+    <string name="edit_record">Edit Record</string>
+    <string name="student_id">Student Id : </string>
+    <string name="score">Score</string>
+    <string name="comment">Comment</string>
+    <string name="Cancel">Cancel</string>
+    <string name="Update">Update</string>
 </resources>
