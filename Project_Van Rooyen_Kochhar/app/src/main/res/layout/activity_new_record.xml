@@ -7,7 +7,7 @@
     tools:context=".NewRecord">
 
     <TextView
-        android:id="@+id/newRecord_tv"
+        android:id="@+id/EditRecord_tv"
         android:layout_width="356dp"
         android:layout_height="60dp"
         android:layout_marginStart="28dp"
@@ -34,7 +34,7 @@
         app:layout_constraintBottom_toTopOf="@+id/score_sb"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/newRecord_tv" />
+        app:layout_constraintTop_toBottomOf="@+id/EditRecord_tv" />
 
     <SeekBar
         android:id="@+id/score_sb"
