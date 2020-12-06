@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
 
+
 class EditRecord : AppCompatActivity() {
 
     var vm  : MyViewModel? = null
@@ -17,8 +18,8 @@ class EditRecord : AppCompatActivity() {
         setContentView(R.layout.activity_edit_record)
 
         vm = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(this.getApplication())).get(MyViewModel::class.java)
-        val intent = Intent(this, MainScreen::class.java)
-        //id = intent.getStringExtra()
+
+        id = intent.getStringExtra().toInt()
         
 
 
