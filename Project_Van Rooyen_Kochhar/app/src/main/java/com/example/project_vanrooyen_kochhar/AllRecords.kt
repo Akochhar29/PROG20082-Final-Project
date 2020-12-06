@@ -15,11 +15,16 @@ class AllRecords : AppCompatActivity() {
         setContentView(R.layout.activity_all_records)
         vm = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(this.getApplication())).get(MyViewModel::class.java)
 
-        val layoutManager = LinearLayoutManager(this)
-        val data :ArrayList<Student> = vm!!.students
-        val adapter = Adapter(data, this)
-        records_rv.layoutManager = layoutManager
-        records_rv.adapter = adapter
+        /*
+        if (vm != null) {
+            val layoutManager = LinearLayoutManager(this)
+            vm!!.getStudents()
+            val data: ArrayList<Student>? = vm?.students
+            val adapter = data?.let { Adapter(it, this) }
+            records_rv.layoutManager = layoutManager
+            records_rv.adapter = adapter
+        }valid
+         */
     }
 
     fun returnToSender(view: View){

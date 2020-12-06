@@ -11,7 +11,7 @@ import org.json.JSONObject
 import org.xml.sax.Parser
 import java.net.URL
 
-
+        val loginResponse = "valid"
 class LoginScreen : AppCompatActivity() {
     var username = ""
     var password = ""

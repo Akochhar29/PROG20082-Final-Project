@@ -1,0 +1,73 @@
+Index: app/src/main/java/com/example/project_vanrooyen_kochhar/MyDatabase.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import android.content.Context\nimport androidx.room.*\nimport com.example.project_vanrooyen_kochhar.Student\nimport com.example.project_vanrooyen_kochhar.StudentDao\n\n\n@Database(entities = arrayOf(Student::class) , version = 1)\nabstract class MyDatabase : RoomDatabase() {\n\n    abstract fun  studentDao() : StudentDao\n    companion object {\n        private var instance: MyDatabase? = null\n        fun getDatabase(context: Context): MyDatabase? {\n            if (instance == null) {\n                synchronized(MyDatabase::class){\n                    instance = Room.databaseBuilder(\n                        context.applicationContext,\n                        MyDatabase::class.java,\n                        \"MyDB\"\n                    ).allowMainThreadQueries().build()\n\n                }\n\n            }\n\n            return instance\n        }\n    }\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/project_vanrooyen_kochhar/MyDatabase.kt	(revision 5afb7f74cc75dda0014b236b543073c74460a02e)
++++ app/src/main/java/com/example/project_vanrooyen_kochhar/MyDatabase.kt	(date 1607230735000)
+@@ -4,23 +4,18 @@
+ import com.example.project_vanrooyen_kochhar.StudentDao
+ 
+ 
+-@Database(entities = arrayOf(Student::class) , version = 1)
++@Database(entities = [Student::class], version = 1)
+ abstract class MyDatabase : RoomDatabase() {
+-
+     abstract fun  studentDao() : StudentDao
+     companion object {
+         private var instance: MyDatabase? = null
+         fun getDatabase(context: Context): MyDatabase? {
+             if (instance == null) {
+-                synchronized(MyDatabase::class){
+-                    instance = Room.databaseBuilder(
++                    instance = Room.databaseBuilder<MyDatabase>(
+                         context.applicationContext,
+                         MyDatabase::class.java,
+                         "MyDB"
+                     ).allowMainThreadQueries().build()
+-
+-                }
+-
+             }
+ 
+             return instance
+Index: app/src/main/java/com/example/project_vanrooyen_kochhar/AllRecords.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.project_vanrooyen_kochhar\n\nimport androidx.appcompat.app.AppCompatActivity\nimport android.os.Bundle\nimport android.view.View\nimport androidx.lifecycle.ViewModelProvider\nimport androidx.recyclerview.widget.LinearLayoutManager\nimport kotlinx.android.synthetic.main.activity_all_records.*\n\nclass AllRecords : AppCompatActivity() {\n    var vm  : MyViewModel? = null\n\n    override fun onCreate(savedInstanceState: Bundle?) {\n        super.onCreate(savedInstanceState)\n        setContentView(R.layout.activity_all_records)\n        vm = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(this.getApplication())).get(MyViewModel::class.java)\n\n        val layoutManager = LinearLayoutManager(this)\n        val data :ArrayList<Student> = vm!!.students\n        val adapter = Adapter(data, this)\n        records_rv.layoutManager = layoutManager\n        records_rv.adapter = adapter\n    }\n\n    fun returnToSender(view: View){\n        finish()\n    }\n\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/project_vanrooyen_kochhar/AllRecords.kt	(revision 5afb7f74cc75dda0014b236b543073c74460a02e)
++++ app/src/main/java/com/example/project_vanrooyen_kochhar/AllRecords.kt	(date 1607230139000)
+@@ -16,8 +16,8 @@
+         vm = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(this.getApplication())).get(MyViewModel::class.java)
+ 
+         val layoutManager = LinearLayoutManager(this)
+-        val data :ArrayList<Student> = vm!!.students
+-        val adapter = Adapter(data, this)
++        val data : ArrayList<Student>? = vm?.students
++        val adapter = data?.let { Adapter(it, this) }
+         records_rv.layoutManager = layoutManager
+         records_rv.adapter = adapter
+     }
+Index: app/src/main/java/com/example/project_vanrooyen_kochhar/LoginScreen.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.project_vanrooyen_kochhar\n\nimport android.content.Context\nimport android.content.Intent\nimport androidx.appcompat.app.AppCompatActivity\nimport android.os.Bundle\nimport android.view.View\nimport android.widget.Toast\nimport kotlinx.android.synthetic.main.activity_login_screen.*\nimport org.json.JSONObject\nimport org.xml.sax.Parser\nimport java.net.URL\n\n\nclass LoginScreen : AppCompatActivity() {\n    var username = \"\"\n    var password = \"\"\n    var sharePreferences = \"sharedPrefsFile\"\n\n    override fun onCreate(savedInstanceState: Bundle?) {\n        super.onCreate(savedInstanceState)\n        setContentView(R.layout.activity_login_screen)\n\n        val sharedPrefs = getSharedPreferences(sharePreferences, Context.MODE_PRIVATE)\n        val autoLog = sharedPrefs.getString(username,\"\")\n        if (autoLog == \"\"){\n\n        } else {\n            val intent = Intent(this, MainScreen::class.java)\n            intent.putExtra(\"username\", username_et.text.toString())\n            startActivity(intent)\n        }\n    }\n\n    fun login(view: View) {\n        username = username_et.text.toString();\n        password = pwd_et.text.toString()\n\n        // val urlResponse = JSONObject(URL(\"http://mohameom.dev.fast.sheridanc.on.ca/login/verify.php?name=\" + username + \"&password=\" + password).readText())\n       // val loginResponse = urlResponse.getJSONObject(\"login\").toString()\n\n\n\n       if (loginResponse == \"valid\"){\n\n           val intent = Intent(this, MainScreen::class.java)\n           intent.putExtra(\"username\", username_et.text.toString())\n           startActivity(intent)\n\n           if(keeplogged_cb.isChecked) {\n               val sharedPrefs = getSharedPreferences(sharePreferences, Context.MODE_PRIVATE)\n               val editor = sharedPrefs.edit()\n\n               editor.putString(username, password);\n               editor.commit()\n\n           }\n\n       } else if(loginResponse == \"invalid\"){\n           Toast.makeText(\n               applicationContext,\n               \"Wrong password. Please try again.\",\n               Toast.LENGTH_SHORT\n           ).show()\n\n       }\n\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/project_vanrooyen_kochhar/LoginScreen.kt	(revision 5afb7f74cc75dda0014b236b543073c74460a02e)
++++ app/src/main/java/com/example/project_vanrooyen_kochhar/LoginScreen.kt	(date 1607230180000)
+@@ -39,7 +39,7 @@
+         // val urlResponse = JSONObject(URL("http://mohameom.dev.fast.sheridanc.on.ca/login/verify.php?name=" + username + "&password=" + password).readText())
+        // val loginResponse = urlResponse.getJSONObject("login").toString()
+ 
+-
++        val loginResponse = "valid"
+ 
+        if (loginResponse == "valid"){
+ 
