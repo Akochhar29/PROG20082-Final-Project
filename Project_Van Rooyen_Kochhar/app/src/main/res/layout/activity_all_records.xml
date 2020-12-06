@@ -18,7 +18,8 @@
         app:layout_constraintBottom_toTopOf="@+id/records_rv"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@string/all_records" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/records_rv"
@@ -41,8 +42,43 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="17dp"
         android:layout_marginBottom="32dp"
+        android:text="@string/main_page"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/records_rv" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/records_rv"
+        app:layout_constraintEnd_toEndOf="@+id/records_rv"
+        app:layout_constraintStart_toStartOf="@+id/records_rv">
+
+        <TextView
+            android:id="@+id/idTop_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/id_column"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/scoreTop_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/score_column"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/commentTop_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/comment_column"
+            android:textAlignment="center" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
