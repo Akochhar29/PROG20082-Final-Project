@@ -1,0 +1,36 @@
+Index: app/src/main/java/com/example/project_vanrooyen_kochhar/EditRecord.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.project_vanrooyen_kochhar\n\nimport android.content.Intent\nimport androidx.appcompat.app.AppCompatActivity\nimport android.os.Bundle\nimport android.view.View\nimport androidx.lifecycle.ViewModelProvider\n\n\nclass EditRecord : AppCompatActivity() {\n\n    var vm  : MyViewModel? = null\n    var id = 0\n    var score = 0\n    var comments = \"\"\n    override fun onCreate(savedInstanceState: Bundle?) {\n        super.onCreate(savedInstanceState)\n        setContentView(R.layout.activity_edit_record)\n\n        vm = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(this.getApplication())).get(MyViewModel::class.java)\n\n        id = intent.getStringExtra().toInt()\n        \n\n\n    }\n\n\n    fun updateRecord(view: View) {\n\n        val db = MyDatabase.getDatabase(this)\n        if (db != null) {\n            val student = Student(id, score, comments)\n            vm?.update(student)\n\n            val intent = Intent(this, AllRecords::class.java)\n            startActivity(intent)\n\n        }\n    }\n\n    fun cancelEdit(view: View) {\n        val intent = Intent(this, AllRecords::class.java)\n        startActivity(intent)\n    }\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/project_vanrooyen_kochhar/EditRecord.kt	(revision 843e5c2bcdc842bbb5abe0c621eb72e7decf46bb)
++++ app/src/main/java/com/example/project_vanrooyen_kochhar/EditRecord.kt	(date 1607228325000)
+@@ -19,7 +19,7 @@
+ 
+         vm = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(this.getApplication())).get(MyViewModel::class.java)
+ 
+-        id = intent.getStringExtra().toInt()
++        //id = intent.getStringExtra().toInt()
+         
+ 
+ 
+Index: app/src/main/java/com/example/project_vanrooyen_kochhar/LoginScreen.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.project_vanrooyen_kochhar\n\nimport android.content.Intent\nimport androidx.appcompat.app.AppCompatActivity\nimport android.os.Bundle\nimport android.view.View\nimport android.widget.Toast\nimport kotlinx.android.synthetic.main.activity_login_screen.*\nimport java.net.URL\n\nclass LoginScreen : AppCompatActivity() {\n    var username = \"\"\n    var password = \"\"\n    override fun onCreate(savedInstanceState: Bundle?) {\n        super.onCreate(savedInstanceState)\n        setContentView(R.layout.activity_login_screen)\n\n    }\n\n    fun login(view: View) {\n        username = username_et.text.toString();\n        password = pwd_et.text.toString()\n\n        val apiResponse = URL( getString(R.string.url) + username + getString(R.string.pass) + password).readText()\n        if (username_et.text.toString() == getString(R.string.username)) {\n            if (pwd_et.text.toString() == getString(R.string.password)) {\n\n                val intent = Intent(this, MainScreen::class.java)\n                intent.putExtra(\"username\", username_et.text.toString())\n                startActivity(intent)\n            } else {\n                Toast.makeText(\n                    applicationContext,\n                    \"Wrong password. Please try again.\",\n                    Toast.LENGTH_SHORT\n                ).show()\n\n            }\n        } else {\n            Toast.makeText(applicationContext,\n                \"Wrong username. Please try again.\",\n                Toast.LENGTH_SHORT).\n            show()\n        }\n\n    }\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/project_vanrooyen_kochhar/LoginScreen.kt	(revision 843e5c2bcdc842bbb5abe0c621eb72e7decf46bb)
++++ app/src/main/java/com/example/project_vanrooyen_kochhar/LoginScreen.kt	(date 1607228393000)
+@@ -21,7 +21,7 @@
+         username = username_et.text.toString();
+         password = pwd_et.text.toString()
+ 
+-        val apiResponse = URL( getString(R.string.url) + username + getString(R.string.pass) + password).readText()
++        //val apiResponse = URL( getString(R.string.url) + username + getString(R.string.pass) + password).readText()
+         if (username_et.text.toString() == getString(R.string.username)) {
+             if (pwd_et.text.toString() == getString(R.string.password)) {
+ 
