@@ -9,10 +9,15 @@ import androidx.room.Update
 interface StudentDao {
 
     @Insert
-    fun insertAll(vararg users: Student)
+    fun insertAll(vararg students: Student)
 
     @Query("SELECT * From student")
     fun getAll() : List<Student>
+
+    @Query("SELECT * FROM student WHERE id LIKE :search ")
+    fun findStudentWithId(search: Int): List<Student>
+
+
 
     @Update
     fun update(student : Student)
