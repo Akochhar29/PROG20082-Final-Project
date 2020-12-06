@@ -35,21 +35,24 @@
         app:layout_constraintTop_toBottomOf="@+id/selectOption_tv">
 
         <RadioButton
-            android:id="@+id/enterNew_rd"
+            android:id="@+id/enterNew_rb"
             android:layout_width="match_parent"
             android:layout_height="90dp"
+            android:onClick="radioChoice"
             android:text="@string/create_record" />
 
         <RadioButton
-            android:id="@+id/displayPrevious_rd"
+            android:id="@+id/displayPrevious_rb"
             android:layout_width="match_parent"
             android:layout_height="100dp"
+            android:onClick="radioChoice"
             android:text="@string/view_records" />
 
         <RadioButton
             android:id="@+id/logout_rb"
             android:layout_width="match_parent"
             android:layout_height="81dp"
+            android:onClick="radioChoice"
             android:text="@string/logout" />
     </RadioGroup>
 

@@ -13,7 +13,15 @@ class MainScreen : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_screen)
-        selectOption_tv.text = getString(R.string.greet) + intent.getStringExtra("username") + "\n" + getString(R.string.option)
+        selectOption_tv.text = getString(R.string.greet) + " " + intent.getStringExtra("username") + "\n" + getString(R.string.option)
+    }
+
+    fun radioChoice(view: View) {
+        when (view){
+            enterNew_rb -> choice = Option.NEWRECORD
+            displayPrevious_rb -> choice = Option.PREVRECORD
+            logout_rb -> choice = Option.LOGOUT
+        }
     }
 
     fun onSubmit(view: View) {
