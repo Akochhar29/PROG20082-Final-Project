@@ -8,23 +8,23 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_all_records.*
 
 class AllRecords : AppCompatActivity() {
-    var vm  : MyViewModel? = null
+    var vm : MyViewModel? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_all_records)
-        vm = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(this.getApplication())).get(MyViewModel::class.java)
+        vm = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(this.application)).get(MyViewModel::class.java)
 
-        /*
+
         if (vm != null) {
             val layoutManager = LinearLayoutManager(this)
             vm!!.getStudents()
-            val data: ArrayList<Student>? = vm?.students
+            val data: ArrayList<Student>? = vm?.students?.value?.toCollection(ArrayList<Student>())
             val adapter = data?.let { Adapter(it, this) }
             records_rv.layoutManager = layoutManager
             records_rv.adapter = adapter
-        }valid
-         */
+        }
+
     }
 
     fun returnToSender(view: View){

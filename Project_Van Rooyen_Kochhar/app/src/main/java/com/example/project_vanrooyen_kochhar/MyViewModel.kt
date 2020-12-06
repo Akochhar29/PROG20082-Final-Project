@@ -16,7 +16,7 @@ class MyViewModel(app : Application) : AndroidViewModel(app) {
 
     }
 
-    private fun getStudents() {
+    fun getStudents() {
 
         val db = MyDatabase.getDatabase(getApplication())
         if( db != null) {

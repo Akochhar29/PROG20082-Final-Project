@@ -1,23 +1,27 @@
+package com.example.project_vanrooyen_kochhar
+
 import android.content.Context
 import androidx.room.*
-import com.example.project_vanrooyen_kochhar.Student
-import com.example.project_vanrooyen_kochhar.StudentDao
 
-
-@Database(entities = [Student::class], version = 1)
+@Database(entities = arrayOf(Student::class) , version = 1)
 abstract class MyDatabase : RoomDatabase() {
+
+    // Setting up the DB to use studentDao
     abstract fun  studentDao() : StudentDao
     companion object {
         private var instance: MyDatabase? = null
+        // Retrieving the DB
         fun getDatabase(context: Context): MyDatabase? {
             if (instance == null) {
-                synchronized(MyDatabase::class) {
-                    instance = Room.databaseBuilder<MyDatabase>(
+                synchronized(MyDatabase::class){
+                    instance = Room.databaseBuilder(
                         context.applicationContext,
                         MyDatabase::class.java,
-                        "MyDB"
+                        "MDB"
                     ).allowMainThreadQueries().build()
+
                 }
+
             }
 
             return instance
