@@ -2,6 +2,7 @@ package com.example.project_vanrooyen_kochhar
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_all_records.*
@@ -19,6 +20,10 @@ class AllRecords : AppCompatActivity() {
         val adapter = Adapter(data, this)
         records_rv.layoutManager = layoutManager
         records_rv.adapter = adapter
+    }
+
+    fun returnToSender(view: View){
+        finish()
     }
 
 }
