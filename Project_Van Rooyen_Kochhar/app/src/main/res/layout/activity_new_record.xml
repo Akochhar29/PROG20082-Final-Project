@@ -91,4 +91,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/save_btn" />
 
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="36dp"
+        android:layout_height="23dp"
+        android:text="TextView"
+        tools:layout_editor_absoluteX="29dp"
+        tools:layout_editor_absoluteY="254dp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="31dp"
+        android:layout_height="22dp"
+        android:text="TextView"
+        tools:layout_editor_absoluteX="190dp"
+        tools:layout_editor_absoluteY="254dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

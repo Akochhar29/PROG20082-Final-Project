@@ -1,6 +1,6 @@
 <resources>
-    <string name="Luke">Luke Van Rooyen</string>
-    <string name="Akshay">Akshay Kochhar</string>
+    <string name="username">Akshay Kochhar</string>
+    <string name="password">991414503</string>
 
     <string name="app_name">Assessment App</string>
     <string name="login">Login</string>

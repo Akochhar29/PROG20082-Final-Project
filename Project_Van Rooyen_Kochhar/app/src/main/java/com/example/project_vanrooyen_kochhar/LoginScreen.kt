@@ -16,8 +16,8 @@ class LoginScreen : AppCompatActivity() {
     }
 
     fun login(view: View) {
-        if (username_et.text.toString() == "") {
-            if (pwd_et.text.toString() == "") {
+        if (username_et.text.toString() == getString(R.string.username)) {
+            if (pwd_et.text.toString() == getString(R.string.password)) {
 
                 val intent = Intent(this, MainScreen::class.java)
                 intent.putExtra("username", username_et.toString())
