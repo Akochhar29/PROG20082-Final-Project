@@ -2,6 +2,9 @@
     <string name="username">Akshay Kochhar</string>
     <string name="password">991414503</string>
 
+    <string name="url">http://mohameom.dev.fast.sheridanc.on.ca/login/verify.php? name= </string>
+    <string name="pass"> password= </string>
+
     <string name="app_name">Assessment App</string>
     <string name="login">Login</string>
     <string name="keep">Keep me logged in</string>

@@ -21,7 +21,7 @@ class LoginScreen : AppCompatActivity() {
         username = username_et.text.toString();
         password = pwd_et.text.toString()
 
-        val apiResponse = URL("http://mohameom.dev.fast.sheridanc.on.ca/login/verify.php?name=" + username + "&password=" + password).readText()
+        val apiResponse = URL( getString(R.string.url) + username + getString(R.string.pass) + password).readText()
         if (username_et.text.toString() == getString(R.string.username)) {
             if (pwd_et.text.toString() == getString(R.string.password)) {
 
