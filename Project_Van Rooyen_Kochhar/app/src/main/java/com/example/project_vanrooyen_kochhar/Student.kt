@@ -1,11 +1,13 @@
 package com.example.project_vanrooyen_kochhar
 
-class Student ( var id : Int, var score : Int, var comment : String){
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 
-    fun getName(){}
+@Entity
+class Student (
+    @PrimaryKey var id : Int,
+    var score : Int, var comment : String){
 
-    fun getId(){}
-
-    fun getComment(){}
 
 }
