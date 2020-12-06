@@ -20,7 +20,7 @@ class LoginScreen : AppCompatActivity() {
             if (pwd_et.text.toString() == getString(R.string.password)) {
 
                 val intent = Intent(this, MainScreen::class.java)
-                intent.putExtra("username", username_et.toString())
+                intent.putExtra("username", username_et.text.toString())
                 startActivity(intent)
             } else {
                 Toast.makeText(
