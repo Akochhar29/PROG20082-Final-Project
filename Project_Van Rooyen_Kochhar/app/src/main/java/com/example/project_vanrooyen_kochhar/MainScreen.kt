@@ -26,21 +26,24 @@ class MainScreen : AppCompatActivity() {
 
     fun onSubmit(view: View) {
         if (choice != Option.NONE) {
-            var intentV2 = Intent(this, null)
-
             when (choice) {
-                Option.NEWRECORD -> intentV2 = Intent(this, NewRecord::class.java)
-                Option.PREVRECORD -> intentV2 = Intent(this, AllRecords::class.java)
+                Option.NEWRECORD -> {
+                    intent = Intent(this, NewRecord::class.java)
+                    startActivity(intent)
+                }
+                Option.PREVRECORD -> {
+                    intent = Intent(this, AllRecords::class.java)
+                    startActivity(intent)
+                }
                 Option.LOGOUT -> finish() //Logout
             }
-            startActivity(intentV2)
         }
     }
-}
 
-enum class Option {
-    NONE,
-    NEWRECORD,
-    PREVRECORD,
-    LOGOUT
+    enum class Option {
+        NONE,
+        NEWRECORD,
+        PREVRECORD,
+        LOGOUT
+    }
 }
