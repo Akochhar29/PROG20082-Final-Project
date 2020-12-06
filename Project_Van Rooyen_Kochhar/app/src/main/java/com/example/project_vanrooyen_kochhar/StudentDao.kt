@@ -14,11 +14,6 @@ interface StudentDao {
     @Query("SELECT * From student")
     fun getAll() : List<Student>
 
-    @Query("SELECT * FROM student WHERE id LIKE :search ")
-    fun findStudentWithId(search: Int): List<Student>
-
-
-
     @Update
     fun update(student : Student)
 }

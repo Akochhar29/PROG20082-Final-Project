@@ -12,11 +12,11 @@ class MyViewModel(app : Application) : AndroidViewModel(app) {
 
         students =  ArrayList<Student>()
 
-        getUsers()
+        getStudents()
 
     }
 
-    fun getUsers() {
+    fun getStudents() {
 
         val db = MyDatabase.getDatabase(getApplication())
         if( db != null) {
@@ -31,7 +31,7 @@ class MyViewModel(app : Application) : AndroidViewModel(app) {
         val db = MyDatabase.getDatabase(getApplication())
         if( db != null) {
             db.studentDao().update(s)
-            getUsers()
+            getStudents()
 
         }
     }

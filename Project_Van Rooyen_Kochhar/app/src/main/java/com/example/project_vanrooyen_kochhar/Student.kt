@@ -7,7 +7,6 @@ import androidx.room.PrimaryKey
 @Entity
 class Student (
     @PrimaryKey var id : Int,
-    var score : Int, var comment : String){
-
+    @ColumnInfo(name = "score")  var score : Int, var comment : String){
 
 }

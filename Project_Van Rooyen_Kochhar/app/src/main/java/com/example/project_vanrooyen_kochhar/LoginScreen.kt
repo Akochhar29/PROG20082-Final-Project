@@ -36,12 +36,12 @@ class LoginScreen : AppCompatActivity() {
         username = username_et.text.toString();
         password = pwd_et.text.toString()
 
-        // val urlResponse = JSONObject(URL("http://mohameom.dev.fast.sheridanc.on.ca/login/verify.php?name=" + username + "&password=" + password).readText())
-       // val loginResponse = urlResponse.getJSONObject("login").toString()
+        //val urlResponse = JSONObject(URL("http://mohameom.dev.fast.sheridanc.on.ca/login/verify.php?name=" + username + "&password=" + password).readText())
+        //val loginResponse = urlResponse.getJSONObject("login").toString()
 
+         val loginResponse = "valid"
 
-
-       if (loginResponse == "valid"){
+      if (loginResponse == "valid"){
 
            val intent = Intent(this, MainScreen::class.java)
            intent.putExtra("username", username_et.text.toString())
