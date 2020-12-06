@@ -33,7 +33,7 @@ class MainScreen : AppCompatActivity() {
                 Option.PREVRECORD -> intentV2 = Intent(this, AllRecords::class.java)
                 Option.LOGOUT -> finish() //Logout
             }
-            startActivity(intent)
+            startActivity(intentV2)
         }
     }
 }

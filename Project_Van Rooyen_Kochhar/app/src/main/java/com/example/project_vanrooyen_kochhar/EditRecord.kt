@@ -18,7 +18,7 @@ class EditRecord : AppCompatActivity() {
 
         vm = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(this.getApplication())).get(MyViewModel::class.java)
         val intent = Intent(this, MainScreen::class.java)
-        id = intent.getStringExtra()
+        //id = intent.getStringExtra()
         
 
 

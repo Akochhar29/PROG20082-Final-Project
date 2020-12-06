@@ -17,15 +17,17 @@ class AllRecords : AppCompatActivity() {
         records_rv.adapter = adapter
     }
 
+
+
     private fun getUsers(): ArrayList<Student> {
         val db = MyDatabase.getDatabase(getApplication())
         var list = arrayListOf<Student>()
         if( db != null) {
-            list = db.userDao().getAll().toCollection(ArrayList<Student>())
+            list = db.studentDao().getAll().toCollection(ArrayList<Student>())
         }
 
         return list
     }
-    
+
 
 }
