@@ -6,11 +6,11 @@ import androidx.lifecycle.MutableLiveData
 
 class MyViewModel(app : Application) : AndroidViewModel(app) {
 
-    lateinit var students : MutableLiveData<List<Student>>
+    lateinit var students : ArrayList<Student>
 
     init{
 
-        students =  MutableLiveData<List<Student>>()
+        students =  ArrayList<Student>()
 
         getStudents()
 
@@ -22,7 +22,7 @@ class MyViewModel(app : Application) : AndroidViewModel(app) {
         if( db != null) {
             val list = db.studentDao().getAll()
 
-            students.value = list
+            students = list.toCollection(ArrayList<Student>())
         }
 
     }

@@ -19,7 +19,7 @@ class AllRecords : AppCompatActivity() {
         if (vm != null) {
             val layoutManager = LinearLayoutManager(this)
             vm!!.getStudents()
-            val data: ArrayList<Student>? = vm?.students?.value?.toCollection(ArrayList<Student>())
+            val data: ArrayList<Student>? = vm?.students
             val adapter = data?.let { Adapter(it, this) }
             records_rv.layoutManager = layoutManager
             records_rv.adapter = adapter
