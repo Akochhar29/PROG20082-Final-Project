@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_login_screen.*
@@ -87,6 +88,7 @@ class LoginScreen : AppCompatActivity() {
             
         } catch (e : Exception){
 
+            Log.d("TAG", e.toString())
 
         }
 
