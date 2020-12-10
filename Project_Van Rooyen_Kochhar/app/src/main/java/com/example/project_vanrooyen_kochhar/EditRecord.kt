@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
+import kotlinx.android.synthetic.main.activity_edit_record.*
 
 
 class EditRecord : AppCompatActivity() {
@@ -12,16 +13,20 @@ class EditRecord : AppCompatActivity() {
     var vm  : MyViewModel? = null
     var id = 0
     var score = 0
-    var comments = ""
+    var comment = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_record)
 
         vm = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(this.getApplication())).get(MyViewModel::class.java)
 
-       // id = intent.getStringExtra().toInt()
-        
+        id = intent.getIntExtra("pId", 0)
+        score = intent.getIntExtra("pScore", 0)
+        comment = intent.getStringExtra("pComment").toString()
 
+        showId_tv.text = id.toString()
+        editScore_et.setText(score)
+        editComment_et.setText(comment)
 
     }
 
@@ -30,7 +35,9 @@ class EditRecord : AppCompatActivity() {
 
         val db = MyDatabase.getDatabase(this)
         if (db != null) {
-            val student = Student(id, score, comments)
+            score = editScore_et.text.toString().toInt()
+            comment = editScore_et.text.toString()
+            val student = Student(id, score, comment)
             vm?.update(student)
 
             val intent = Intent(this, AllRecords::class.java)
