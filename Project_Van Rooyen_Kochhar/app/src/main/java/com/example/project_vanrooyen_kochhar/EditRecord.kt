@@ -25,7 +25,7 @@ class EditRecord : AppCompatActivity() {
         comment = intent.getStringExtra("pComment").toString()
 
         showId_tv.text = id.toString()
-        editScore_et.setText(score)
+        editScore_et.setText(score.toString())
         editComment_et.setText(comment)
 
     }

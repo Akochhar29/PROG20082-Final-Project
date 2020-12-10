@@ -7,12 +7,14 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import kotlinx.android.synthetic.main.activity_login_screen.*
 import org.json.JSONObject
 import org.xml.sax.Parser
 import java.io.BufferedReader
 import java.io.InputStream
 import java.lang.Exception
+import java.net.HttpURLConnection
 import java.net.URL
 import javax.net.ssl.HttpsURLConnection
 
@@ -20,10 +22,12 @@ class LoginScreen : AppCompatActivity() {
     var username = ""
     var password = ""
     var sharePreferences = "sharedPrefsFile"
-
+    lateinit var vm : MyViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login_screen)
+        vm = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(application))
+            .get(MyViewModel::class.java)
         names_tv.text = getString(R.string.Akshay) + "\n" + getString(R.string.Luke)
 
         val sharedPrefs = getSharedPreferences(sharePreferences, Context.MODE_PRIVATE)
@@ -40,15 +44,15 @@ class LoginScreen : AppCompatActivity() {
     }
 
     fun login(view: View) {
-        var loginResponse  = ""
+
         username = username_et.text.toString();
         password = pwd_et.text.toString()
 
-        var url = URL("http://mohameom.dev.fast.sheridanc.on.ca/login/verify.php?name=" + username + "&password=" + password)
-        loginResponse = loadData(url)
+        var url = URL("https://mohameom.dev.fast.sheridanc.on.ca/login/verify.php?name=" + username + "&password=" + password)
+        var loginResponse = vm.getValidity(url)
 
 
-        if (loginResponse == "valid") {
+        if (loginResponse.value == "valid") {
 
             val intent = Intent(this, MainScreen::class.java)
             intent.putExtra("username", username_et.text.toString())
@@ -62,7 +66,7 @@ class LoginScreen : AppCompatActivity() {
                 editor.commit()
             }
 
-        } else if (loginResponse == "invalid") {
+        } else if (loginResponse.value == "invalid") {
             Toast.makeText(
                 applicationContext,
                 "Wrong password. Please try again.",
@@ -72,27 +76,5 @@ class LoginScreen : AppCompatActivity() {
         }
     }
 
-    fun loadData(url : URL): String {
-        var ins : InputStream? = null
-        var res = ""
-        var valid = ""
-        try {
-            val conn = url.openConnection() as HttpsURLConnection
-            conn.requestMethod = "GET"
 
-            ins = conn.inputStream
-
-            res = ins.bufferedReader().use(BufferedReader::readText)
-            var json = JSONObject(res)
-            valid = json.optString("login")
-            
-        } catch (e : Exception){
-
-            Log.d("TAG", e.toString())
-
-        }
-
-        return valid
-
-    }
 }
