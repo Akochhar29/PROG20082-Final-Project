@@ -30,10 +30,14 @@ class MainScreen : AppCompatActivity() {
                 Option.NEWRECORD -> {
                     intent = Intent(this, NewRecord::class.java)
                     startActivity(intent)
+                    choice = Option.NONE
+                    enterNew_rb.isChecked = false
                 }
                 Option.PREVRECORD -> {
                     intent = Intent(this, AllRecords::class.java)
                     startActivity(intent)
+                    choice = Option.NONE
+                    displayPrevious_rb.isChecked = false
                 }
                 Option.LOGOUT -> finish() //Logout
             }
