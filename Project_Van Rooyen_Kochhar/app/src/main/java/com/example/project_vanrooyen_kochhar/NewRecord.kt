@@ -13,7 +13,6 @@ class NewRecord : AppCompatActivity() {
         score_sb.max = 10;
 
 
-
     }
 
     fun saveStudent(view: View) {
