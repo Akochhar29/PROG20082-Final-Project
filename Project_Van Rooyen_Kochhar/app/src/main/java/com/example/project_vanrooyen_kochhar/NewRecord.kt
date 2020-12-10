@@ -14,7 +14,6 @@ class NewRecord : AppCompatActivity() {
 
         save_btn.text = getString(R.string.save)
 
-
     }
 
     fun saveStudent(view: View) {
