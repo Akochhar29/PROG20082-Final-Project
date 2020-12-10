@@ -20,6 +20,7 @@ class LoginScreen : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login_screen)
+        names_tv.text = getString(R.string.Akshay) + "\n" + getString(R.string.Luke)
 
         val sharedPrefs = getSharedPreferences(sharePreferences, Context.MODE_PRIVATE)
         val autoLog = sharedPrefs.getString(username,"")

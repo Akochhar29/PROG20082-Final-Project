@@ -4,6 +4,9 @@
     <string name="keep">Keep me logged in</string>
     <string name="name">Your name and Student Number</string>
 
+    <string name="Luke">Luke Van Rooyen 991583099</string>
+    <string name="Akshay">Akshay Kochhar 991414503</string>
+
     <string name="greet">Hi, </string>
     <string name="option">Please select an Option</string>
     <string name="create_record">Enter new Record</string>
@@ -16,6 +19,9 @@
     <string name="comment_hint">Comments</string>
     <string name="save">Save Record</string>
     <string name="back">Back</string>
+    <string name="zero">0</string>
+    <string name="five">5</string>
+    <string name="ten">10</string>
 
     <string name="all_records">All Records</string>
     <string name="id_column">id</string>

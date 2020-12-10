@@ -25,8 +25,9 @@
         android:layout_marginTop="94dp"
         android:layout_marginEnd="27dp"
         android:layout_marginBottom="16dp"
+        android:text="@string/new_record"
         android:textAlignment="center"
-        android:textSize="20sp"
+        android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/id_et"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -41,7 +42,10 @@
         android:layout_marginEnd="28dp"
         android:layout_marginBottom="16dp"
         android:ems="10"
+        android:hint="@string/student_id"
         android:inputType="textPersonName"
+        android:textAlignment="textStart"
+        android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/score_sb"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -49,11 +53,11 @@
 
     <SeekBar
         android:id="@+id/score_sb"
-        android:layout_width="357dp"
-        android:layout_height="94dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="28dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
         android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toTopOf="@+id/comments_et"
         app:layout_constraintEnd_toEndOf="parent"
@@ -62,15 +66,17 @@
 
     <EditText
         android:id="@+id/comments_et"
-        android:layout_width="354dp"
-        android:layout_height="116dp"
-        android:layout_marginStart="28dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="29dp"
+        android:layout_marginEnd="32dp"
         android:layout_marginBottom="16dp"
         android:ems="10"
         android:gravity="start|top"
+        android:hint="@string/comment_hint"
         android:inputType="textMultiLine"
+        android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/save_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -85,23 +91,25 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="26dp"
         android:layout_marginBottom="8dp"
+        android:onClick="saveStudent"
         app:layout_constraintBottom_toTopOf="@+id/back_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:onClick="saveStudent"
-        app:layout_constraintTop_toBottomOf="@+id/comments_et" />
+        app:layout_constraintTop_toBottomOf="@+id/comments_et"
+        tools:text="@string/save" />
 
 
     <Button
 
         android:id="@+id/back_btn"
-        android:onClick="retToMain"
         android:layout_width="359dp"
         android:layout_height="50dp"
         android:layout_marginStart="28dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="49dp"
+        android:onClick="retToMain"
+        android:text="@string/back"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -130,5 +138,38 @@
         app:layout_constraintBottom_toTopOf="@+id/score_sb"
         app:layout_constraintEnd_toStartOf="@+id/textView4"
         app:layout_constraintTop_toBottomOf="@+id/id_et" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/score_sb"
+        app:layout_constraintEnd_toEndOf="@+id/score_sb"
+        app:layout_constraintStart_toStartOf="@+id/score_sb">
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/zero" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/five"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/ten"
+            android:textAlignment="textEnd" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
