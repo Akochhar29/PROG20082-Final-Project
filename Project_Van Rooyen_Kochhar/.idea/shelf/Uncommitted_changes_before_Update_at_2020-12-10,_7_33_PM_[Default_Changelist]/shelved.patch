@@ -1,0 +1,39 @@
+Index: app/src/main/java/com/example/project_vanrooyen_kochhar/MainScreen.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.project_vanrooyen_kochhar\n\nimport android.content.Intent\nimport androidx.appcompat.app.AppCompatActivity\nimport android.os.Bundle\nimport android.view.View\nimport kotlinx.android.synthetic.main.activity_main_screen.*\n\nclass MainScreen : AppCompatActivity() {\n\n    var choice = Option.NONE\n    override fun onCreate(savedInstanceState: Bundle?) {\n        super.onCreate(savedInstanceState)\n        setContentView(R.layout.activity_main_screen)\n        selectOption_tv.text = getString(R.string.greet) + \" \" + intent.getStringExtra(\"username\") + \"\\n\" + getString(R.string.option)\n    }\n\n    fun radioChoice(view: View) {\n        when (view){\n            enterNew_rb -> choice = Option.NEWRECORD\n            displayPrevious_rb -> choice = Option.PREVRECORD\n            logout_rb -> choice = Option.LOGOUT\n        }\n    }\n\n    fun onSubmit(view: View) {\n        if (choice != Option.NONE) {\n            when (choice) {\n                Option.NEWRECORD -> {\n                    intent = Intent(this, NewRecord::class.java)\n                    startActivity(intent)\n                    choice = Option.NONE\n                    enterNew_rb.isChecked = false\n                }\n                Option.PREVRECORD -> {\n                    intent = Intent(this, AllRecords::class.java)\n                    startActivity(intent)\n                    choice = Option.NONE\n                    displayPrevious_rb.isChecked = false\n                }\n                Option.LOGOUT -> finish() //Logout\n            }\n        }\n    }\n\n    enum class Option {\n        NONE,\n        NEWRECORD,\n        PREVRECORD,\n        LOGOUT\n    }\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/project_vanrooyen_kochhar/MainScreen.kt	(revision 03254c4a2b22848b53d85b8253664153d825ba86)
++++ app/src/main/java/com/example/project_vanrooyen_kochhar/MainScreen.kt	(date 1607645179000)
+@@ -1,5 +1,6 @@
+ package com.example.project_vanrooyen_kochhar
+ 
++import android.content.Context
+ import android.content.Intent
+ import androidx.appcompat.app.AppCompatActivity
+ import android.os.Bundle
+@@ -8,6 +9,7 @@
+ 
+ class MainScreen : AppCompatActivity() {
+ 
++    var sharePreferences = "sharedPrefsFile"
+     var choice = Option.NONE
+     override fun onCreate(savedInstanceState: Bundle?) {
+         super.onCreate(savedInstanceState)
+@@ -38,7 +40,13 @@
+                     choice = Option.NONE
+                     displayPrevious_rb.isChecked = false
+                 }
+-                Option.LOGOUT -> finish() //Logout
++                Option.LOGOUT -> {
++                    val sharedPrefs = getSharedPreferences(sharePreferences, Context.MODE_PRIVATE)
++                    val editor = sharedPrefs.edit()
++                    editor.clear()
++                    editor.apply()
++                    finish()
++                } //Logout
+             }
+         }
+     }
