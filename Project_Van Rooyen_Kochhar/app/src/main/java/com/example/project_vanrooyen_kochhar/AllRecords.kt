@@ -27,6 +27,20 @@ class AllRecords : AppCompatActivity() {
 
     }
 
+    override fun onResume() {
+        super.onResume()
+
+        if (vm != null) {
+            val layoutManager = LinearLayoutManager(this)
+            vm!!.getStudents()
+            val data: ArrayList<Student>? = vm?.students
+            val adapter = data?.let { Adapter(it, this) }
+            records_rv.layoutManager = layoutManager
+            records_rv.adapter = adapter
+        }
+
+}
+
     fun returnToSender(view: View){
         finish()
     }

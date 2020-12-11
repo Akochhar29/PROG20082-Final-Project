@@ -43,8 +43,7 @@ class EditRecord : AppCompatActivity() {
             val student = Student(id, score, comment)
             vm?.update(student)
 
-            val intent = Intent(this, AllRecords::class.java)
-            startActivity(intent)
+            finish()
 
         }
     }
