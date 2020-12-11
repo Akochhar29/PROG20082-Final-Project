@@ -58,7 +58,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/id_column"
-            android:textAlignment="center" />
+            android:textAlignment="viewStart" />
 
         <TextView
             android:id="@+id/scoreTop_tv"
@@ -66,7 +66,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/score_column"
-            android:textAlignment="center" />
+            android:textAlignment="viewStart" />
 
         <TextView
             android:id="@+id/commentTop_tv"
@@ -74,6 +74,6 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/comment_column"
-            android:textAlignment="center" />
+            android:textAlignment="viewStart" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
