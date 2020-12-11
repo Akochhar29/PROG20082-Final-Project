@@ -4,10 +4,7 @@ import android.app.Application
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
 import org.json.JSONObject
 import java.io.BufferedReader
 import java.io.InputStream
@@ -56,11 +53,12 @@ class MyViewModel(app : Application) : AndroidViewModel(app) {
         }
     }
 
-    fun makeRequest(url: URL) : String {
+    suspend fun makeRequest(url: URL) : String {
         var ins: InputStream? = null
         var res = ""
 
         try {
+            Log.d("ss", "ss")
             val conn = url.openConnection() as HttpsURLConnection
             conn.requestMethod = "GET"
 
@@ -78,8 +76,8 @@ class MyViewModel(app : Application) : AndroidViewModel(app) {
     fun getValidity(url: URL): MutableLiveData<String> {
 
 
-        CoroutineScope(Dispatchers.IO).launch {
-
+        val scope = CoroutineScope(Dispatchers.IO)
+            scope.launch {
             var res = makeRequest(url)
 
             withContext(Dispatchers.Main) {
@@ -88,13 +86,15 @@ class MyViewModel(app : Application) : AndroidViewModel(app) {
                     var json = JSONObject(res)
                     valid = json.optString("login")
                     this@MyViewModel.validity.value = valid
-
+                    Log.d("nn", "nn")
                 } catch (e: Exception) {
                     Log.d("TAG", e.toString())
 
                 }
             }
         }
+        Thread.sleep(500)
+        Log.d("valid", validity.value.toString())
         return validity
     }
 }

@@ -27,13 +27,12 @@ class NewRecord : AppCompatActivity() {
             Thread {
                 val db = MyDatabase.getDatabase(this)
                 if (db != null) {
-                    db.studentDao().insertAll(student)
+                    db?.studentDao().insertAll(student)
 
-                    runOnUiThread {
                         id_et.text.clear()
                         score_sb.progress = 0
                         comments_et.text.clear()
-                    }
+
                 }
             }.start()
         } else {

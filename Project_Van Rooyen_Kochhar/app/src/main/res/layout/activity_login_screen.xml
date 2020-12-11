@@ -67,6 +67,8 @@
         android:layout_marginBottom="30dp"
         android:onClick="login"
         android:text="@string/login"
+        android:focusableInTouchMode="false"
+        android:focusable="false"
         app:layout_constraintBottom_toTopOf="@+id/names_tv"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

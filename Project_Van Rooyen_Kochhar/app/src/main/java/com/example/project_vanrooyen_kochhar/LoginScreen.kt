@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
@@ -34,13 +35,12 @@ class LoginScreen : AppCompatActivity() {
     }
 
     fun login(view: View) {
-
         username = username_et.text.toString();
         password = pwd_et.text.toString()
 
         var url = URL("https://mohameom.dev.fast.sheridanc.on.ca/login/verify.php?name=" + username + "&password=" + password)
         var loginResponse = vm.getValidity(url)
-
+        Log.d("resp", loginResponse.value.toString())
 
         if (loginResponse.value == "valid") {
 
