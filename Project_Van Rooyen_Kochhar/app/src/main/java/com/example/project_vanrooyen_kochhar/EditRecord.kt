@@ -3,6 +3,7 @@ package com.example.project_vanrooyen_kochhar
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import kotlinx.android.synthetic.main.activity_edit_record.*
@@ -36,7 +37,7 @@ class EditRecord : AppCompatActivity() {
         val db = MyDatabase.getDatabase(this)
         if (db != null) {
             score = editScore_et.text.toString().toInt()
-            comment = editScore_et.text.toString()
+            comment = editComment_et.text.toString()
             val student = Student(id, score, comment)
             vm?.update(student)
 
