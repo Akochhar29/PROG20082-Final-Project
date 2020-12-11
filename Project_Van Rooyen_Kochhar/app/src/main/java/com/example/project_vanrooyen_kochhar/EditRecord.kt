@@ -36,7 +36,7 @@ class EditRecord : AppCompatActivity() {
         val db = MyDatabase.getDatabase(this)
         if (db != null) {
             score = editScore_et.text.toString().toInt()
-            comment = editScore_et.text.toString()
+            comment = editComment_et.text.toString()
             val student = Student(id, score, comment)
             vm?.update(student)
 
