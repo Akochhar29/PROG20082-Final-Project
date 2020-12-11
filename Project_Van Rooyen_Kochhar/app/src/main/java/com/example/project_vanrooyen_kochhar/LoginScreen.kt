@@ -31,15 +31,14 @@ class LoginScreen : AppCompatActivity() {
         names_tv.text = getString(R.string.Akshay) + "\n" + getString(R.string.Luke)
 
         val sharedPrefs = getSharedPreferences(sharePreferences, Context.MODE_PRIVATE)
-        val autoLog = sharedPrefs.getString(username, "")
-        if (autoLog != null) {
-            if (autoLog.isNotBlank()) {
+        val autoLog = sharedPrefs.getString("username", "")
+            if (autoLog == "") {
+
+            } else {
                 val intent = Intent(this, MainScreen::class.java)
                 intent.putExtra("username", autoLog)
                 startActivity(intent)
             }
-        }
-
 
     }
 
@@ -62,7 +61,7 @@ class LoginScreen : AppCompatActivity() {
                 val sharedPrefs = getSharedPreferences(sharePreferences, Context.MODE_PRIVATE)
                 val editor = sharedPrefs.edit()
 
-                editor.putString(username, password);
+                editor.putString("username", username)
                 editor.commit()
             }
 
