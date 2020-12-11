@@ -13,10 +13,8 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="64dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginBottom="32dp"
         android:text="@string/edit_record"
         android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/showId_tv"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -52,7 +50,7 @@
         android:id="@+id/editComment_et"
         android:layout_width="344dp"
         android:layout_height="62dp"
-        android:layout_marginTop="132dp"
+        android:layout_marginTop="32dp"
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
@@ -77,13 +75,12 @@
 
     <Button
         android:id="@+id/cancel_btn"
-        android:layout_width="130dp"
-        android:layout_height="52dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:onClick="cancelEdit"
         android:text="@string/Cancel"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editComment_et" />
 
@@ -92,7 +89,7 @@
         android:id="@+id/delete_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="32dp"
         android:onClick="delete"
         android:text="@string/delete"
         app:layout_constraintEnd_toEndOf="@+id/editComment_et"
@@ -101,13 +98,12 @@
 
     <Button
         android:id="@+id/update_btn"
-        android:layout_width="135dp"
-        android:layout_height="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         android:onClick="updateRecord"
         android:text="update"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editComment_et" />
 

@@ -13,6 +13,7 @@ class AllRecords : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_all_records)
+        allRecords_tv.text = getString(R.string.all_records)
         vm = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(this.application)).get(MyViewModel::class.java)
 
 
