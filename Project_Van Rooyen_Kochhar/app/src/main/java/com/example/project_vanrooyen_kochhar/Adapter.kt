@@ -32,7 +32,7 @@ class Adapter(private var data : ArrayList<Student>, var context : Context) : Re
         context.startActivity(intent)
     }
 
-    // Setting the rows to unique pictures, names and capitals
+
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.itemView.id_tv.text = data[position].id.toString()
         holder.itemView.scoreRow_tv.text = data[position].score.toString()
