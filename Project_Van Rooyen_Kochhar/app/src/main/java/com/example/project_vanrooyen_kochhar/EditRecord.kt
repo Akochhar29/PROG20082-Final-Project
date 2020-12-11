@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.View
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.ViewModelProvider
 import kotlinx.android.synthetic.main.activity_edit_record.*
 
@@ -48,7 +50,26 @@ class EditRecord : AppCompatActivity() {
     }
 
     fun cancelEdit(view: View) {
-        val intent = Intent(this, AllRecords::class.java)
-        startActivity(intent)
+        finish()
+    }
+
+    fun delete(view: View) {
+        var alert = AlertDialog.Builder(this)
+        alert.setTitle("Would you like to delete this record?").setPositiveButton("Yes"){
+            dialog, which -> removeStudent()
+        }
+            .setNegativeButton("No"){_, _ ->
+
+            }
+
+        alert.show()
+
+    }
+
+    fun removeStudent() {
+        val student = Student(id, score, comment)
+        vm?.delete(student)
+        finish()
+
     }
 }

@@ -47,6 +47,14 @@ class MyViewModel(app : Application) : AndroidViewModel(app) {
 
         }
     }
+    fun delete(s: Student){
+        val db = MyDatabase.getDatabase(getApplication())
+        if (db != null) {
+            db.studentDao().delete(s)
+            getStudents()
+
+        }
+    }
 
     fun makeRequest(url: URL) : String {
         var ins: InputStream? = null
