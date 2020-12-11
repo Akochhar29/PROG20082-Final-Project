@@ -32,14 +32,13 @@ class LoginScreen : AppCompatActivity() {
 
         val sharedPrefs = getSharedPreferences(sharePreferences, Context.MODE_PRIVATE)
         val autoLog = sharedPrefs.getString("username", "")
-            if (autoLog == "") {
-
-            } else {
+        if (autoLog != null) {
+            if (autoLog.isNotEmpty()) {
                 val intent = Intent(this, MainScreen::class.java)
                 intent.putExtra("username", autoLog)
                 startActivity(intent)
             }
-
+        }
     }
 
     fun login(view: View) {
