@@ -4,19 +4,11 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import kotlinx.android.synthetic.main.activity_login_screen.*
-import org.json.JSONObject
-import org.xml.sax.Parser
-import java.io.BufferedReader
-import java.io.InputStream
-import java.lang.Exception
-import java.net.HttpURLConnection
 import java.net.URL
-import javax.net.ssl.HttpsURLConnection
 
 class LoginScreen : AppCompatActivity() {
     var username = ""

@@ -8,13 +8,14 @@
 
     <TextView
         android:id="@+id/EditRecord_tv"
-        android:layout_width="343dp"
-        android:layout_height="67dp"
-        android:layout_marginStart="34dp"
-        android:layout_marginTop="76dp"
-        android:layout_marginEnd="34dp"
-        android:layout_marginBottom="31dp"
-        android:text="TextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="32dp"
+        android:text="@string/edit_record"
+        android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/showId_tv"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,60 +23,57 @@
 
     <TextView
         android:id="@+id/showId_tv"
-        android:layout_width="345dp"
-        android:layout_height="73dp"
-        android:layout_marginStart="34dp"
-        android:layout_marginTop="31dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginBottom="16dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/score_tv"
+        android:text="@string/student_id"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/EditRecord_tv" />
 
     <EditText
         android:id="@+id/editScore_et"
-        android:layout_width="344dp"
-        android:layout_height="61dp"
-        android:layout_marginStart="33dp"
-        android:layout_marginTop="3dp"
-        android:layout_marginEnd="34dp"
-        android:layout_marginBottom="16dp"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="86dp"
+        android:layout_marginEnd="32dp"
         android:ems="10"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/comment_tv"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/score_tv" />
+        app:layout_constraintTop_toBottomOf="@+id/showId_tv" />
 
     <EditText
         android:id="@+id/editComment_et"
         android:layout_width="344dp"
         android:layout_height="62dp"
-        android:layout_marginStart="33dp"
-        android:layout_marginEnd="34dp"
-        android:layout_marginBottom="57dp"
+        android:layout_marginTop="132dp"
         android:ems="10"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/cancel_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/comment_tv" />
+        app:layout_constraintTop_toBottomOf="@+id/editScore_et" />
 
     <TextView
         android:id="@+id/score_tv"
         android:layout_width="121dp"
         android:layout_height="32dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="254dp"
-        android:layout_marginBottom="3dp"
-        android:text="TextView"
+        android:text="@string/score"
         app:layout_constraintBottom_toTopOf="@+id/editScore_et"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/showId_tv" />
+        app:layout_constraintStart_toStartOf="@+id/editScore_et" />
+
+    <TextView
+        android:id="@+id/comment2_tv"
+        android:layout_width="121dp"
+        android:layout_height="32dp"
+        android:text="@string/comment"
+        app:layout_constraintBottom_toTopOf="@+id/editComment_et"
+        app:layout_constraintStart_toStartOf="@+id/editComment_et" />
 
     <TextView
         android:id="@+id/comment_tv"
@@ -93,14 +91,10 @@
         android:id="@+id/cancel_btn"
         android:layout_width="130dp"
         android:layout_height="52dp"
-        android:layout_marginStart="35dp"
-        android:layout_marginTop="56dp"
-        android:layout_marginEnd="42dp"
-        android:layout_marginBottom="95dp"
+        android:layout_marginStart="32dp"
         android:onClick="cancelEdit"
-        android:text="Button"
+        android:text="@string/Cancel"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/update_btn"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editComment_et" />
 
@@ -108,15 +102,11 @@
         android:id="@+id/update_btn"
         android:layout_width="135dp"
         android:layout_height="50dp"
-        android:layout_marginStart="42dp"
-        android:layout_marginTop="82dp"
-        android:layout_marginEnd="69dp"
-        android:layout_marginBottom="99dp"
-        android:text="Button"
+        android:layout_marginEnd="32dp"
         android:onClick="updateRecord"
+        android:text="update"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/cancel_btn"
         app:layout_constraintTop_toBottomOf="@+id/editComment_et" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
