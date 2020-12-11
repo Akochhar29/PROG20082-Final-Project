@@ -17,7 +17,15 @@ class MainScreen : AppCompatActivity() {
         selectOption_tv.text = getString(R.string.greet) + " " + intent.getStringExtra("username") + "\n" + getString(R.string.option)
     }
 
+    override fun onResume() {
+        super.onResume()
+        radioGroup.clearCheck()
+        choice = Option.NONE
+
+    }
+
     fun radioChoice(view: View) {
+        choice = Option.NONE
         when (view){
             enterNew_rb -> choice = Option.NEWRECORD
             displayPrevious_rb -> choice = Option.PREVRECORD
@@ -31,14 +39,10 @@ class MainScreen : AppCompatActivity() {
                 Option.NEWRECORD -> {
                     intent = Intent(this, NewRecord::class.java)
                     startActivity(intent)
-                    choice = Option.NONE
-                    enterNew_rb.isChecked = false
                 }
                 Option.PREVRECORD -> {
                     intent = Intent(this, AllRecords::class.java)
                     startActivity(intent)
-                    choice = Option.NONE
-                    displayPrevious_rb.isChecked = false
                 }
                 Option.LOGOUT -> {
                     val sharedPrefs = getSharedPreferences(sharePreferences, Context.MODE_PRIVATE)
