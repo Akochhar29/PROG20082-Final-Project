@@ -25,7 +25,7 @@ class EditRecord : AppCompatActivity() {
         score = intent.getIntExtra("pScore", 0)
         comment = intent.getStringExtra("pComment").toString()
 
-        showId_tv.text = id.toString()
+        showId_tv.text = getString(R.string.student_id)+ " " + id.toString()
         editScore_et.setText(score.toString())
         editComment_et.setText(comment)
 
