@@ -18,7 +18,7 @@ abstract class MyDatabase : RoomDatabase() {
                         context.applicationContext,
                         MyDatabase::class.java,
                         "MDB"
-                    ).build()
+                    ).allowMainThreadQueries().build()
 
                 }
 
