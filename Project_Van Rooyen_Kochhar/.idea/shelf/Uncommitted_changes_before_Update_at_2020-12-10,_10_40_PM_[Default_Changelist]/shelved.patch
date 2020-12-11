@@ -1,0 +1,17 @@
+Index: app/src/main/java/com/example/project_vanrooyen_kochhar/LoginScreen.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.project_vanrooyen_kochhar\n\nimport android.content.Context\nimport android.content.Intent\nimport androidx.appcompat.app.AppCompatActivity\nimport android.os.Bundle\nimport android.view.View\nimport android.widget.Toast\nimport androidx.lifecycle.ViewModelProvider\nimport kotlinx.android.synthetic.main.activity_login_screen.*\nimport java.net.URL\n\nclass LoginScreen : AppCompatActivity() {\n    var username = \"\"\n    var password = \"\"\n    var sharePreferences = \"sharedPrefsFile\"\n    lateinit var vm : MyViewModel\n    override fun onCreate(savedInstanceState: Bundle?) {\n        super.onCreate(savedInstanceState)\n        setContentView(R.layout.activity_login_screen)\n        vm = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(application))\n            .get(MyViewModel::class.java)\n        names_tv.text = getString(R.string.Akshay) + \"\\n\" + getString(R.string.Luke)\n\n        val sharedPrefs = getSharedPreferences(sharePreferences, Context.MODE_PRIVATE)\n        val autoLog = sharedPrefs.getString(\"username\", \"\")\n        if (autoLog != null) {\n            if (autoLog.isNotEmpty()) {\n                val intent = Intent(this, MainScreen::class.java)\n                intent.putExtra(\"username\", autoLog)\n                startActivity(intent)\n            }\n        }\n    }\n\n    fun login(view: View) {\n\n        username = username_et.text.toString();\n        password = pwd_et.text.toString()\n\n        var url = URL(\"https://mohameom.dev.fast.sheridanc.on.ca/login/verify.php?name=\" + username + \"&password=\" + password)\n        var loginResponse = vm.getValidity(url)\n\n\n        if (loginResponse.value == \"valid\") {\n\n            val intent = Intent(this, MainScreen::class.java)\n            intent.putExtra(\"username\", username_et.text.toString())\n            startActivity(intent)\n\n            if (keeplogged_cb.isChecked) {\n                val sharedPrefs = getSharedPreferences(sharePreferences, Context.MODE_PRIVATE)\n                val editor = sharedPrefs.edit()\n\n                editor.putString(\"username\", username)\n                editor.commit()\n            }\n\n        } else if (loginResponse.value == \"invalid\") {\n            Toast.makeText(\n                applicationContext,\n                \"Wrong username or password. Please try again.\",\n                Toast.LENGTH_SHORT\n            ).show()\n\n        }\n    }\n\n\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/project_vanrooyen_kochhar/LoginScreen.kt	(revision 655bec0bf3d11d970bbf0f32f88f4baf42a5fdcf)
++++ app/src/main/java/com/example/project_vanrooyen_kochhar/LoginScreen.kt	(date 1607657976000)
+@@ -42,6 +42,7 @@
+         var loginResponse = vm.getValidity(url)
+ 
+ 
++
+         if (loginResponse.value == "valid") {
+ 
+             val intent = Intent(this, MainScreen::class.java)

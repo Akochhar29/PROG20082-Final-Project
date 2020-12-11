@@ -73,7 +73,7 @@ class MyViewModel(app : Application) : AndroidViewModel(app) {
         return res
     }
 
-    fun getValidity(url: URL): MutableLiveData<String> {
+    fun getValidity(url: URL) {
 
 
         val scope = CoroutineScope(Dispatchers.IO)
@@ -93,8 +93,6 @@ class MyViewModel(app : Application) : AndroidViewModel(app) {
                 }
             }
         }
-        Thread.sleep(500)
-        Log.d("valid", validity.value.toString())
-        return validity
+
     }
 }

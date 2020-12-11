@@ -23,6 +23,11 @@ class LoginScreen : AppCompatActivity() {
             .get(MyViewModel::class.java)
         names_tv.text = getString(R.string.Akshay) + "\n" + getString(R.string.Luke)
 
+        var url = URL("https://mohameom.dev.fast.sheridanc.on.ca/login/verify.php?name=" + username + "&password=" + password)
+        vm.getValidity(url)
+        var loginResponse = vm.validity
+        Log.d("resp", loginResponse.value.toString())
+
         val sharedPrefs = getSharedPreferences(sharePreferences, Context.MODE_PRIVATE)
         val autoLog = sharedPrefs.getString("username", "")
         if (autoLog != null) {
@@ -39,8 +44,10 @@ class LoginScreen : AppCompatActivity() {
         password = pwd_et.text.toString()
 
         var url = URL("https://mohameom.dev.fast.sheridanc.on.ca/login/verify.php?name=" + username + "&password=" + password)
-        var loginResponse = vm.getValidity(url)
+        vm.getValidity(url)
+        var loginResponse = vm.validity
         Log.d("resp", loginResponse.value.toString())
+
 
         if (loginResponse.value == "valid") {
 
