@@ -69,7 +69,7 @@ class LoginScreen : AppCompatActivity() {
         } else if (loginResponse.value == "invalid") {
             Toast.makeText(
                 applicationContext,
-                "Wrong password. Please try again.",
+                "Wrong username or password. Please try again.",
                 Toast.LENGTH_SHORT
             ).show()
 

@@ -1,9 +1,8 @@
 package com.example.project_vanrooyen_kochhar
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Update
+import android.telecom.Call.Details
+import androidx.room.*
+
 
 @Dao
 interface StudentDao {
@@ -15,5 +14,9 @@ interface StudentDao {
     fun getAll() : List<Student>
 
     @Update
-    fun update(student : Student)
+    fun update(student: Student)
+
+    @Delete
+    fun delete(student: Student)
+
 }
